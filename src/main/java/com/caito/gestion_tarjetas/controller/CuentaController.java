@@ -83,4 +83,23 @@ public class CuentaController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/cuenta/{nombreUsuario}")
+    public ResponseEntity<List<Cuenta>> listByUser(@PathVariable("nombreUsuario")
+                                                   String nombreUsuario){
+
+        Usuario usuario = null;
+
+        if (usuarioService.existsByNombreUsuario(nombreUsuario)){
+            usuario = usuarioService.getByNombreusuario(nombreUsuario).get();
+        }else {
+            return new ResponseEntity(new Mensaje("El Titular No Existe!"),
+                     HttpStatus.BAD_REQUEST);
+        }
+
+        List<Cuenta> cuentas = cuentaService.findByUser(usuario.getId());
+
+        return new ResponseEntity<List<Cuenta>>(cuentas, HttpStatus.OK);
+    }
+
 }

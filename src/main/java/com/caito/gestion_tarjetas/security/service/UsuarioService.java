@@ -38,4 +38,10 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Usuario> findOne(Long id){
+
+        return usuarioRepository.findById(id);
+    }
+
 }

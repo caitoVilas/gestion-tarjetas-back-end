@@ -39,4 +39,10 @@ public class CuentaService {
         return cuentaRepository.existsByUsuario_idAndTarjeta_idAndEntidad_id(usuario_id,
                 tarjeta_id, entidad_id);
     }
+
+    @Transactional(readOnly = true)
+    public List<Cuenta> findByUser(Long id){
+
+        return cuentaRepository.findAllByUsuario_id(id);
+    }
 }
