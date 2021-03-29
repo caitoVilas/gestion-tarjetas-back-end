@@ -3,6 +3,9 @@ package com.caito.gestion_tarjetas.entity;
 import com.caito.gestion_tarjetas.security.entity.Usuario;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "cuentas")
@@ -21,6 +24,8 @@ public class Cuenta {
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
+    @OneToMany(mappedBy = "cuenta")
+    private Set<Movimiento> movimientos = new HashSet<Movimiento>();
 
     public Cuenta() {
     }
