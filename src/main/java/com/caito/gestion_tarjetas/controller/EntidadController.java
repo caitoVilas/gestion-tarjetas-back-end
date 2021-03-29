@@ -2,6 +2,7 @@ package com.caito.gestion_tarjetas.controller;
 
 import com.caito.gestion_tarjetas.entity.Entidad;
 import com.caito.gestion_tarjetas.entity.Tarjeta;
+import com.caito.gestion_tarjetas.service.CuentaService;
 import com.caito.gestion_tarjetas.service.EntidadService;
 import com.caito.gestion_tarjetas.util.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class EntidadController {
 
     @Autowired
     EntidadService entidadService;
+    @Autowired
+    CuentaService cuentaService;
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping
@@ -40,5 +43,20 @@ public class EntidadController {
 
         entidadService.save(entidad);
         return new ResponseEntity(new Mensaje("Entidad Creada!"), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @DeleteMapping("/{entidad_id}")
+    public ResponseEntity<?> delete(@PathVariable("entidad_id") Long entidad_id){
+
+        if (cuentaService.existsEntidad(entidad_id)){
+
+            return new ResponseEntity(new Mensaje("La Entidad Tiene Cuentas Asignadas!"),
+                    HttpStatus.BAD_REQUEST);
+        }
+
+        entidadService.delete(entidad_id);
+
+        return new ResponseEntity(new Mensaje("Entidad Eliminada!"), HttpStatus.OK);
     }
 }

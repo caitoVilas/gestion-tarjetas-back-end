@@ -45,4 +45,16 @@ public class CuentaService {
 
         return cuentaRepository.findAllByUsuario_id(id);
     }
+
+    @Transactional(readOnly = true)
+    public boolean existsTarjeta(Long tarjeta_id){
+
+        return cuentaRepository.existsByTarjeta_id(tarjeta_id);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean existsEntidad(Long entidad_id){
+
+        return cuentaRepository.existsByEntidad_id(entidad_id);
+    }
 }

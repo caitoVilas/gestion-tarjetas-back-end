@@ -11,4 +11,6 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Long> {
 
     boolean existsByUsuario_idAndTarjeta_idAndEntidad_id(Long u_id, Long t_id, Long e_id);
     List<Cuenta> findAllByUsuario_id (Long id);
+    boolean existsByTarjeta_id(Long id_tarjeta);
+    boolean existsByEntidad_id(Long id_entidad);
 }
