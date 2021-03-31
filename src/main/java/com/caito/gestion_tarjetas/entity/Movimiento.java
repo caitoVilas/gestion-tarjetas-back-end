@@ -13,6 +13,7 @@ public class Movimiento {
     private Double importe;
     private int cuota;
     private int numero_cuota;
+    private String detalle;
     @Temporal(TemporalType.DATE)
     private Date fecha_compra;
     @Temporal(TemporalType.DATE)
@@ -24,11 +25,12 @@ public class Movimiento {
     public Movimiento() {
     }
 
-    public Movimiento(Double importe, int cuota, int numero_cuota, Date fecha_compra,
-                      Date fecha_vencimiento) {
+    public Movimiento(Double importe, int cuota, int numero_cuota, String detalle,
+                      Date fecha_compra, Date fecha_vencimiento) {
         this.importe = importe;
         this.cuota = cuota;
         this.numero_cuota = numero_cuota;
+        this.detalle = detalle;
         this.fecha_compra = fecha_compra;
         this.fecha_vencimiento = fecha_vencimiento;
     }
@@ -87,5 +89,13 @@ public class Movimiento {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
 }
