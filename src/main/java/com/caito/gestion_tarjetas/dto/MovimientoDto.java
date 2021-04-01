@@ -8,7 +8,7 @@ public class MovimientoDto {
     private Date fecha_vencimiento;
     private Double importe;
     private String detalle;
-    private int cuota;
+    private int cuotas;
     private int numero_cuota;
     private Long cuenta;
 
@@ -44,12 +44,12 @@ public class MovimientoDto {
         this.detalle = detalle;
     }
 
-    public int getCuota() {
-        return cuota;
+    public int getCuotas() {
+        return cuotas;
     }
 
-    public void setCuota(int cuota) {
-        this.cuota = cuota;
+    public void setCuota(int cuotas) {
+        this.cuotas = cuotas;
     }
 
     public int getNumero_cuota() {
