@@ -4,28 +4,32 @@ import java.util.Date;
 
 public class MovimientoDto {
 
-    private Date fecha_compra;
-    private Date fecha_vencimiento;
+    private String fecha_compra;
+    private String fecha_vencimiento;
     private Double importe;
     private String detalle;
     private int cuotas;
     private int numero_cuota;
     private Long cuenta;
 
-    public Date getFecha_compra() {
+    public String getFecha_compra() {
         return fecha_compra;
     }
 
-    public void setFecha_compra(Date fecha_compra) {
+    public void setFecha_compra(String fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
 
-    public Date getFecha_vencimiento() {
+    public String getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    public void setFecha_vencimiento(Date fecha_vencimiento) {
+    public void setFecha_vencimiento(String fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
+    }
+
+    public void setCuotas(int cuotas) {
+        this.cuotas = cuotas;
     }
 
     public Double getImporte() {

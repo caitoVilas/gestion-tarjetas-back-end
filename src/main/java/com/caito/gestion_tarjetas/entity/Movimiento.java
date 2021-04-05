@@ -1,7 +1,8 @@
 package com.caito.gestion_tarjetas.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "movimientos")
@@ -14,10 +15,8 @@ public class Movimiento {
     private int cuota;
     private int numero_cuota;
     private String detalle;
-    @Temporal(TemporalType.DATE)
-    private Date fecha_compra;
-    @Temporal(TemporalType.DATE)
-    private Date fecha_vencimiento;
+    private LocalDate fecha_compra;
+    private LocalDate fecha_vencimiento;
     @ManyToOne
     @JoinColumn(name = "cuenta_id", referencedColumnName = "id")
     private Cuenta cuenta;
@@ -26,7 +25,7 @@ public class Movimiento {
     }
 
     public Movimiento(Double importe, int cuota, int numero_cuota, String detalle,
-                      Date fecha_compra, Date fecha_vencimiento) {
+                      LocalDate fecha_compra, LocalDate fecha_vencimiento) {
         this.importe = importe;
         this.cuota = cuota;
         this.numero_cuota = numero_cuota;
@@ -34,6 +33,8 @@ public class Movimiento {
         this.fecha_compra = fecha_compra;
         this.fecha_vencimiento = fecha_vencimiento;
     }
+
+
 
     public Long getId() {
         return id;
@@ -67,19 +68,19 @@ public class Movimiento {
         this.numero_cuota = numero_cuota;
     }
 
-    public Date getFecha_compra() {
+    public LocalDate getFecha_compra() {
         return fecha_compra;
     }
 
-    public void setFecha_compra(Date fecha_compra) {
+    public void setFecha_compra(LocalDate fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
 
-    public Date getFecha_vencimiento() {
+    public LocalDate getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    public void setFecha_vencimiento(Date fecha_vencimiento) {
+    public void setFecha_vencimiento(LocalDate fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
 
